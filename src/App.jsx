@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../src/app.css'
 import LoadingSpinner from './components/LoadingSpinner';
 import axios from 'axios';
+import  apikey    from '../variables'
 
 
 
@@ -18,7 +19,7 @@ var metaData = {
     'currtemp': 25,
     'pressure': 0,
     'windspeed': 0,
-    'icon': 'public/weather.png',
+    'icon': '/weather.png',
     'summary': 'Unavailable',
     'location': places[locationIndex].location,
     'time': new Date().toLocaleTimeString(),
@@ -64,7 +65,7 @@ export default function App() {
 
 
     async function makeWeatherCall() {
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${places[locationIndex].lat}&lon=${places[locationIndex].lon}&appid=8296f3d12905c10450118d0faf584dd7&units=metric`
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${places[locationIndex].lat}&lon=${places[locationIndex].lon}&appid=${apikey}&units=metric`
         const response = await axios.get(url);
         return response.data;
     }
